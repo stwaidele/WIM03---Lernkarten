@@ -1,0 +1,203 @@
+%
+%		* ----------------------------------------------------------------------------
+%		* "THE BEER-WARE LICENSE" (Revision 42/023):
+%		* Ronny Bergmann <mail@rbergmann.info> wrote this file. As long as you retain
+%		* this notice you can do whatever you want with this stuff. If we meet some day,
+%		* and you think  this stuff is worth it, you can buy me a beer or a coffee in return. 
+%		* ----------------------------------------------------------------------------
+%
+%		* ----------------------------------------------------------------------------
+%		* "THE COFFEE-WARE LICENSE" (Revision 42/023):
+%		* Ronny Bergmann <mail@rbergmann.info> actually only wrote the template for this file. 
+%       * Stefan Waidele <Stefan@Waidele.info> wrote the content of the index-cards.
+%       * As long as you retain
+%		* this notice you can do whatever you want with this stuff. If we meet some day,
+%		* and you think  this stuff is worth it, you can buy me a coffee in return. 
+%		* ----------------------------------------------------------------------------
+%
+%
+% Beispiel zur Dokumentvorlage für Din A6 Karteikarten 
+% -- Version 1.8b --
+%
+\documentclass[a6paper,12pt,print,grid=none,parskip=half]{kartei}
+
+\usepackage[utf8]{inputenc} %UTF8
+\usepackage{amsfonts}   
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\begin{document}
+\newcommand{\limes}[2]{\lim_{#1 \rightarrow #2}}
+
+%\elementarlimes{x->???}{Funktion}{Lösung}{Kurzform}{Bemerkungen}
+\newcommand{\elementarlimes}[5]{
+\begin{karte}{\[ \limes{x}{#1} #2 \]}
+	\begin{huge}
+	\[ \limes{x}{#1} #2 = #3 \]
+	\end{huge}
+	\begin{center}
+	symbolische Kurzform: $"#4" = #3$
+	\end{center}
+	#5
+	\end{karte}	
+}
+
+%\kurzfrage{Frage}{TextGroß}{TextKlein}
+\newcommand{\kurzfrage}[3]{
+\begin{karte}{\[#1\]}
+	\begin{huge}\[#1 = #2\]\end{huge}
+	\begin{center}#3\end{center}
+	\end{karte}	
+}
+
+%	\begin{karte}[Thema]{Frage}[Bemerkung]
+%	Antwort
+%	\end{karte}
+
+%	\begin{karte}{}[]
+%	\end{karte}
+
+\fach{Grenzwerte}
+\kommentar{Definition}
+\begin{karte}{Grenzwert einer Funktion $f$ für $x \rightarrow x_0 $ }
+Wenn sich für $x \rightarrow x_0 $ die zugehörigen Funktionswerte 
+einem Konstanten Wert $g (\in \mathbb{R})$ immer mehr nähern, 
+egal, auf welche Weise $x$ gegen $x_0$ strebt, so sagt man,\\
+\begin{center}
+\textbf{$g$ ist der Grenzwert von $f(x)$ \\bei der Annäherung von $x$ gegen $x_0$;}\\
+oder 
+\[\lim_{x \rightarrow x_0} f(x) = g\]
+"Limes von $f(x)$ für $x$ gegen $x_0$ gleich $g$" \\
+\end{center}
+oder
+"$f(x)$ \textit{konvergiert} für $x \rightarrow x_0$ gegen den Grenzwert $g (\in \mathbb{R})$"\\
+
+Wenn $f$ für  $x \rightarrow x_0 $ \textit{nicht konvergiert}, so sagt man:\\
+"$f$ ist für $x \rightarrow x_0 $ \textit{divergent}."
+\end{karte}
+
+\begin{karte}{Links- und rechtsseitiger Grenzwert}
+\textbf{Nähern wir uns "von Links"} (also mit größer werdenden Werten für $x$) der untersuchten Stelle $x_0$ an, 
+so ermitteln wir den "linksseitigen Grenzwert" $\lim_{x \rightarrow x_0^-} f(x) = g$
+ 
+\textbf{Nähern wir uns "von Rechts"} (also mit kleiner werdenden Werten für $x$) der untersuchten Stelle $x_0$ an, 
+so ermitteln wir den "rechtsseitigen Grenzwert" $\lim_{x \rightarrow x_0^-} f(x) = g$
+
+Wenn linksseitiger und rechtsseitiger Grenzwert übereinstimmen, spricht man von dem Grenzwert von $f$ in $x_0$
+\[\mathop {\lim }\limits_{x \to {x_0}} f(x) = g \Leftrightarrow \mathop {\lim }\limits_{x \to x_0^ - } f(x) = \mathop {\lim }\limits_{x \to x_0^ + } f(x) = g
+\]
+\end{karte}
+
+\begin{karte}{Grenzwert einer Funktion $f$ für $x \rightarrow \infty$}
+Wenn für unbeschränkt wachsendes (oder analog: unbeschränkt fallendes) Argument $x$ $(x \rightarrow \infty$ die entsprechenden Funktionswerte $f(x)$ dem Zahlenwert $g (\in \mathbb{R})$ 
+schließlich beliebig nahe kommen, so heißt die Funktion $f$ für $x \rightarrow \infty$ konvergent gegen den Grenzwert $g$.
+
+\[\mathop {\lim }\limits_{x \to \infty } f(x) = g\]
+"Limes von $f(x)$ für $x$ gegen Unendlich gleich $g$"
+
+\[\mathop {\lim }\limits_{x \to -\infty } f(x) = g\]
+"Limes von $f(x)$ für $x$ gegen Minus Unendlich gleich $g$"
+\end{karte}
+
+
+\fach{Grenzwerte}
+\kommentar{Elementare Funktionen}
+
+%\elementarlimes{x->???}{Funktion}{Lösung}{Kurzform}{Bemerkungen}
+\elementarlimes{\infty}{x^n}{\infty}{\infty^n}{}
+\elementarlimes{\infty}{\dfrac{1}{x^n}}{0}{\dfrac{1}{\infty}}{}
+\elementarlimes{0}{x^n}{0}{0^n}{}
+\elementarlimes{0^+}{\dfrac{1}{x^n}}{\infty}{\dfrac{1}{0^+}}{für $n > 0$;}
+\elementarlimes{0^-}{\dfrac{1}{x^n}}{\left\lbrace\begin{array}{cl}+\infty, &\mbox{falls n gerade}\\-\infty, &\mbox{falls n ungerade}\end{array}\right.}{\dfrac{1}{0^-}}{$n \in N$}
+\elementarlimes{\infty}{e^x}{\infty}{e^\infty}{}
+\elementarlimes{-\infty}{e^x}{0^+}{e^{-\infty}}{}
+\elementarlimes{-\infty}{e^{-x}}{\infty}{e^\infty}{}
+\elementarlimes{\infty}{e^{-x}}{0^+}{e^{-\infty}}{}
+\elementarlimes{0}{e^x}{1}{e^0}{(Spezialfall von $a^x$)}
+\elementarlimes{0}{e^{-x}}{1}{e^0}{(Spezialfall von $a^{-x}$)}
+\elementarlimes{\infty}{a^x}{\left\lbrace\begin{array}{cl}0 &\mbox{für $0<a<1$}\\1 &\mbox{für $a=1$}\\ \infty &\mbox{für $a>1$}\end{array}\right.}{a^\infty}{}
+\elementarlimes{\infty}{a^{-x}}{\left\lbrace\begin{array}{cl}\infty &\mbox{für $0<a<1$}\\1 &\mbox{für $a=1$}\\ 0 &\mbox{für $a>1$}\end{array}\right.}{a^\infty}{}
+\elementarlimes{\infty}{(\ln x)}{\infty}{\ln \infty}{}
+\elementarlimes{1}{(\ln x)}{0}{\ln 1}{}
+\elementarlimes{0^+}{(\ln x)}{-\infty}{\ln 0^+}{}
+
+\fach{Grenzwerte}
+\kommentar{Rechenregeln}
+%\kurzfrage{Frage}{TextGroß}{TextKlein}
+\kurzfrage{\lim c }{\lim c = c}{}
+\kurzfrage{\lim (f \pm h)}{\lim f \pm \lim h}{$= g_1 \pm g_2$}
+\kurzfrage{\lim (f \cdot h)}{\lim f \cdot \lim h}{$= g_1 \cdot g_2$}
+\kurzfrage{\lim \dfrac{f}{h}}{\dfrac{\lim f}{\lim h}}{$= \dfrac{g_1}{g_2}$, sofern $h, g_2 \not= 0$;}
+\kurzfrage{\lim f^n}{(\lim f)^n}{$= {g_1}^n$  ($n \in N$); }
+\kurzfrage{\lim \sqrt[n]{f}}{\sqrt[n]{\lim f}}{$= \sqrt[n]{g_1}$ ($n \in N; f, g_1 \ge 0$);}
+\kurzfrage{\lim e^f}{e^{\lim f}}{$= e^{g_1}$}
+\kurzfrage{\lim \left(\ln f\right)}{\ln \left(\lim f\right)}{$= \ln g_1$, sofern $f, g_1 \ge 0$.}
+
+\fach{Stetigkeit}
+\kommentar{Definition}
+%\begin{karte}{}
+%\end{karte}
+\begin{karte}{Was versteht man unter\\ "Stetigkeit einer Funktion"	?}
+Eine Funktion ist (an einer Stelle $x_0$ oder in einem Intervall) stetig wenn folgende Voraussetzungen gegeben sind:
+\begin{enumerate}
+\item $f$ muss in $x_0$ definiert sein, das haißt $f(x)$ muss existieren
+\item $f$ muss für $x \rightarrow x_0$ einen (endlichen) Grenzwert \\(und somit übereinstimmende rechts- und linksseitige Grenzwerte) besitzen.
+\[\begin{array}{cll}
+\limes{x}{x_0} f(x) &= \limes{x}{x_0^+} f(x) & \\ &= \limes{x}{x_0^-} f(x) \\ &= g & (\in R)
+\end{array}
+\]
+\item der Grenzwert $g$ von $f$ für $x \rightarrow x_0$ muss nicht nur vorhanden sein, sondern er muss auch exakt mit dem Funktionswert an der Stelle $x_0$ übereinstimmen
+\[\limes{x}{x_0} f(x) = f(x_0)
+\]
+\end{enumerate}
+\end{karte}
+
+\begin{karte}{Arten der Unstetigkeit}
+Es gibt folgende klassische Unstetigkeiten:
+\begin{enumerate}
+\item \textbf{Sprung} \\z.B. bei Abschnittsweise definierten Funktionen. \\Stichwort "Sprungfixe Kosten"
+\item \textbf{Pol}\\z.B. \[f(x)=\frac { 1 }{ x }\] 
+\item \textbf{Lücke} \\z.B. an Stellen $x_0$ bei denen der Nenner 0 wird. \\Kann evt. geschlossen werden, in dem per Definition \[f(x_0) = \limes{x}{x_0} f(x)\] gesetzt wird.
+\end{enumerate}
+\end{karte}
+
+\begin{karte}{Wann besitzt eine Funktion\\ einen (endlichen) Sprung?}
+Die Funktion $f$ besitzt an der derelle $x_0$ \\
+einen (endlichen) Sprung, wenn gilt:
+\[g_{ 1 }\quad =\quad \underset { x\quad \rightarrow \quad { x }_{ 0 }^{ - } }{ \lim   } f(x)\quad \neq \quad \underset { x\quad \rightarrow \quad { x }_{ 0 }^{ + } }{ \lim   } f(x)\quad =\quad g_{ 2 }\]
+\\
+z.B: Sprungfixe Kosten, Portofunktion
+\end{karte}
+
+\begin{karte}{Wann besitzt eine Funktion \\einen Pol?}
+Einer oder beide einseitigen Grenzwerte existiert nicht, \\das heißt $f$ strebt für $x\quad \rightarrow \quad { x }_{ 0 }$ gegen $\pm \infty$. \\Dann sagt man: \\
+\\
+$f$ hat an der Stelle $x_0$ eine Unendlichkeitsstelle oder einen Pol, \\
+wenn $f$ für $x\rightarrow { x }_{ 0 }^{ + }$ und/oder $x\rightarrow { x }_{ 0 }^{ - }$ \\
+den uneigentlichen Grenzwert $\infty$ oder $-\infty$ besitzt.\\
+\\
+z.B. Stückkosten bei Kostenfunktionen mit Grundgebühr (Stromkostenbeispiel)
+\end{karte}
+
+\begin{karte}{Wann besitzt eine Funktion\\ eine behebbare Unstetigkeitsstelle?}
+$f$ hat an der Stelle $x_0$ eine behebbare Unstetigkeitsstelle, wenn gilt: \\
+\[\lim _{ x\rightarrow { x }_{ 0 } }{ f(x) } =\lim _{ x\rightarrow { x }_{ 0 }^{ - } }{ f(x) } =\lim _{ x\rightarrow { x }_{ 0 }^{ + } }{ f(x) } =g \quad (\in \mathbb{R})\]
+aber $g\neq  f\left( x_0 \right)$ bzw. $x_0\notin D_f$
+
+\end{karte}
+
+\begin{karte}{Frage}
+Antwort
+\end{karte}
+
+\begin{karte}{Frage}
+Antwort
+\end{karte}
+
+
+
+\begin{karte}{Frage}
+Antwort
+\end{karte}
+
+\end{document}
